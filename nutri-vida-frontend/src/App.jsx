@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import StartDiet from "./pages/StartDiet";
 import AddDiet from "./pages/AddDiet";
@@ -27,6 +32,9 @@ function App() {
   return (
     <Router>
       <Routes>
+        {/* Redirigir la raíz (/) a /login */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
+
         <Route element={<NavbarLayout />}>
           <Route path="/home" element={<Home />} />
           <Route path="/start-diet" element={<StartDiet />} />
