@@ -1,8 +1,18 @@
-// src/config/axiosConfig.js
 import axios from "axios";
 
-// Configura la URL base de axios
-axios.defaults.baseURL = "http://localhost:3001/api";
+// Determina la URL base automáticamente
+const getBaseURL = () => {
+  if (window.location.hostname === "localhost") {
+    // Entorno local
+    return "http://localhost:3001/api";
+  } else {
+    // Cualquier otra URL (como un túnel o dominio en producción)
+    return `${window.location.origin}/api`;
+  }
+};
+
+// Configura la URL base para axios
+axios.defaults.baseURL = getBaseURL();
 
 // Interceptor para incluir el token en cada solicitud
 axios.interceptors.request.use(

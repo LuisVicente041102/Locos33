@@ -4,11 +4,11 @@ require("dotenv").config();
 
 const app = express();
 
-// Configurar CORS para permitir solicitudes desde el frontend
+// Configurar CORS para permitir cualquier origen (solo para desarrollo)
 app.use(
   cors({
-    origin: "http://localhost:5173", // Reemplaza con el origen de tu frontend
-    credentials: true,
+    origin: "*", // Permite todos los orígenes
+    credentials: true, // Habilita cookies, encabezados de autenticación, etc.
   })
 );
 
